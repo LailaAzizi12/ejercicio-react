@@ -1,44 +1,49 @@
-import {
-  Button,
-  Col,
-  Container,
-  FloatingLabel,
-  Form,
-  Row,
-} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "./App.css";
-import { PlusCircleDotted } from "react-bootstrap-icons";
+
+import { useState } from "react";
+import ResultadoOperacion from "./componentes/resultadoOperacion";
+import Entradas from "./componentes/Entradas";
+import Operacion from "./componentes/Operacion";
 
 function App() {
+  const [numeroA, setnumeroA] = useState("");
+  const [numeroB, setnumeroB] = useState("");
+  const [operacion, setOperacion] = useState("");
+
+  const numeroAHandler = (event) => {
+    setnumeroA(event.target.value);
+  };
+  const numeroBHandler = (event) => {
+    setnumeroB(event.target.value);
+  };
+
+  const operacionHandler = (operacionClick) => {
+    setOperacion(operacionClick);
+  };
+  const activadoHandler = (operacionActive) => {
+    return operacionActive === operacion;
+  };
   return (
     <>
       <Container>
-        <Row>
-          <Col>
-            <FloatingLabel controlId="floatingInput" label="A" className="mb-3">
-              <Form.Control type="number" placeholder="name@example.com" />
-            </FloatingLabel>
-          </Col>
-          <Col>
-            <FloatingLabel controlId="floatingPassword" label="B">
-              <Form.Control type="number" placeholder="Password" />
-            </FloatingLabel>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Button variant="outline-info">+</Button>
-          </Col>
-          <Col>
-            <Button variant="outline-warning">-</Button>
-          </Col>
-          <Col>
-            <Button variant="outline-primary">*</Button>
-          </Col>
-          <Col>
-            <Button variant="outline-secondary">/</Button>
-          </Col>
-        </Row>
+        <Container>
+          <Entradas
+            numeroA={numeroA}
+            numeroB={numeroB}
+            numeroBHandler={numeroBHandler}
+            numeroAHandler={numeroAHandler}
+          ></Entradas>
+          <Operacion
+            operacionHandler={operacionHandler}
+            activadoHandler={activadoHandler}
+          ></Operacion>
+        </Container>
+        <ResultadoOperacion
+          primerValor={numeroA}
+          segundoValor={numeroB}
+          operacion={operacion}
+        ></ResultadoOperacion>
       </Container>
     </>
   );
