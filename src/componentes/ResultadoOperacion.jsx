@@ -23,17 +23,27 @@ export default function ResultadoOperacion({
       case "multiplicacion":
         return primerValor * segundoValor;
       case "division":
-        return primerValor / segundoValor;
+        return segundoValor !== 0 ? primerValor / segundoValor : "Error";
       default:
-        return 0;
+        return "";
     }
   };
   return (
     <>
-      <Container>
+      <Container className="mt-3">
         <Row>
           <Col>
-            <Card body>{resultado()}</Card>
+            <Card
+              style={{
+                backgroundColor: "rgb(228, 251, 246)",
+                border: "rgb(228, 251, 246)",
+              }}
+            >
+              <Card.Body>
+                <Card.Title>Resultado</Card.Title>
+                <Card.Text>{resultado()}</Card.Text>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

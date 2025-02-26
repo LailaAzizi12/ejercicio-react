@@ -2,45 +2,62 @@ import { Button, Col, Row } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 Operacion.propTypes = {
+  numeroA: PropTypes.number,
+  numeroB: PropTypes.number,
   operacionHandler: () => PropTypes.void,
   activadoHandler: () => PropTypes.void,
 };
 
-export default function Operacion({ operacionHandler, activadoHandler }) {
+export default function Operacion({
+  numeroA,
+  numeroB,
+  operacionHandler,
+  activadoHandler,
+}) {
+  const comprobacionHandler = (operacion) => {
+    if (numeroA && numeroB) operacionHandler(operacion);
+  };
   return (
     <>
-      <Row>
-        <Col>
+      <Row className="mt-3">
+        <Col className="d-grid gap-2">
           <Button
+            size="lg"
+            className="suma"
             variant="outline-info"
-            onClick={() => operacionHandler("suma")}
+            onClick={() => comprobacionHandler("suma")}
             active={activadoHandler("suma")}
           >
             +
           </Button>
         </Col>
-        <Col>
+        <Col className="d-grid gap-2">
           <Button
+            size="lg"
             variant="outline-warning"
-            onClick={() => operacionHandler("resta")}
+            onClick={() => comprobacionHandler("resta")}
             active={activadoHandler("resta")}
           >
             -
           </Button>
         </Col>
-        <Col>
+      </Row>
+      <Row className="mt-3">
+        <Col className="d-grid gap-2">
           <Button
-            variant="outline-primary"
-            onClick={() => operacionHandler("multiplicacion")}
+            size="lg"
+            variant="outline-success"
+            onClick={() => comprobacionHandler("multiplicacion")}
             active={activadoHandler("multiplicacion")}
           >
-            *
+            x
           </Button>
         </Col>
-        <Col>
+        <Col className="d-grid gap-2">
           <Button
+            size="lg"
             variant="outline-secondary"
-            onClick={() => operacionHandler("division")}
+            onClick={() => comprobacionHandler("division")}
             active={activadoHandler("division")}
           >
             /

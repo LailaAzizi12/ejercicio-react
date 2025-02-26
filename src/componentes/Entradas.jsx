@@ -26,6 +26,8 @@ export default function Entradas({
             />
           </FloatingLabel>
         </Col>
+      </Row>
+      <Row>
         <Col>
           <FloatingLabel controlId="floatingPassword" label="B">
             <Form.Control

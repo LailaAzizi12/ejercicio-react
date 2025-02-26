@@ -27,7 +27,8 @@ function App() {
   return (
     <>
       <Container>
-        <Container>
+        <h1>Calculadora</h1>
+        <Container className="mt-3">
           <Entradas
             numeroA={numeroA}
             numeroB={numeroB}
@@ -35,6 +36,8 @@ function App() {
             numeroAHandler={numeroAHandler}
           ></Entradas>
           <Operacion
+            numeroA={numeroA}
+            numeroB={numeroB}
             operacionHandler={operacionHandler}
             activadoHandler={activadoHandler}
           ></Operacion>
