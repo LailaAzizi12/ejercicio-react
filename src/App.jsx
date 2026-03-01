@@ -34,19 +34,19 @@ function App() {
             numeroB={numeroB}
             numeroBHandler={numeroBHandler}
             numeroAHandler={numeroAHandler}
-          ></Entradas>
+          />
           <Operacion
             numeroA={numeroA}
             numeroB={numeroB}
             operacionHandler={operacionHandler}
             activadoHandler={activadoHandler}
-          ></Operacion>
+          />
         </Container>
         <ResultadoOperacion
           primerValor={numeroA}
           segundoValor={numeroB}
           operacion={operacion}
-        ></ResultadoOperacion>
+        />
       </Container>
     </>
   );

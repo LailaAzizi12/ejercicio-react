@@ -28,6 +28,11 @@ export default function ResultadoOperacion({
         return "";
     }
   };
+
+  const factorRedondeo = 10 ** 4;
+  const resultadoRedondeado =
+    Math.round(resultado() * factorRedondeo) / factorRedondeo;
+
   return (
     <>
       <Container className="mt-3">
@@ -41,7 +46,7 @@ export default function ResultadoOperacion({
             >
               <Card.Body>
                 <Card.Title>Resultado</Card.Title>
-                <Card.Text>{resultado()}</Card.Text>
+                <Card.Text>{resultadoRedondeado}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
